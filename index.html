@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/output.css">
+  <script src="https://kit.fontawesome.com/eac4ae703b.js" crossorigin="anonymous"></script>
+  <title>TO-DO List</title>
+</head>
+
+<body class="w-screen selection:bg-[#DB886F] selection:text-[#242731] bg-[#1C1E26] px-64 pt-7">
+
+  <!-- <bg class="bg-background w-screen h-screen fixed blur-sm scale-110">
+    <div class="w-full h-full bg-black opacity-50"></div>
+  </bg> -->
+
+  <div class="w-full p-5 text-center">
+    <h1 class="font-bold text-5xl text-[#BBBBBB]">TO-DO</h1>
+  </div>
+
+  <form name="todoForm" class="w-full p-5 mb-10 flex justify-center">
+    <!-- <h2 class="text-xl text-[#1C1E26]">Add Todo</h2> -->
+    <input type="text" name="todo" spellcheck="false" placeholder="Add your to-do here..."
+      class="bg-[#242731] text-[#DB886F] basis-11/12 outline-none w-full p-3">
+    <button type="submit" class="p-3 text-[#1C1E26] bg-[#DB886F] ml-5 text-center font-bold">Add</button>
+  </form>
+
+  <div class="container flex justify-between items-center mb-3">
+    <h2 class="text-lg text-[#BBBBBB]">To-do list :</h2>
+    <input type="text" name="search" id="search" spellcheck="false" placeholder="Filter..."
+      class="bg-[#242731] text-[#DB886F] outline-none w-6/12 rounded-md p-2">
+  </div>
+
+  <div class="bg-[#242731] text-[#DB886F] w-full p-4 mb-4">
+    <div class="container flex flex-row justify-between content-center">
+      <p>Test To-do</p>
+      <i class="text-[#C84C6B] my-auto fa-solid fa-trash-can"></i>
+    </div>
+  </div>
+
+  <script src="src/script/main.js"></script>
+</body>
+
+</html>
