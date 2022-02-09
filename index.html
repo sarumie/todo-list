@@ -20,27 +20,33 @@
     <h1 class="font-bold text-5xl text-[#BBBBBB]">TO-DO</h1>
   </div>
 
+  <!-- Add To-do -->
   <form name="todoForm" class="w-full p-5 mb-10 flex justify-center">
     <!-- <h2 class="text-xl text-[#1C1E26]">Add Todo</h2> -->
     <input type="text" name="todo" spellcheck="false" placeholder="Add your to-do here..."
       class="bg-[#242731] text-[#DB886F] basis-11/12 outline-none w-full p-3">
-    <button type="submit" class="p-3 text-[#1C1E26] bg-[#DB886F] ml-5 text-center font-bold">Add</button>
+    <button type="submit"
+      class="p-3 text-[#1C1E26] bg-[#DB886F] ml-5 text-center font-bold hover:bg-[#f09479] duration-300">Add</button>
   </form>
 
+  <!-- Sub-header -->
   <div class="container flex justify-between items-center mb-3">
     <h2 class="text-lg text-[#BBBBBB]">To-do list :</h2>
-    <input type="text" name="search" id="search" spellcheck="false" placeholder="Filter..."
-      class="bg-[#242731] text-[#DB886F] outline-none w-6/12 rounded-md p-2">
+    <input type="text" name="search" id="search" spellcheck="false" placeholder="Filter..." class="bg-[#242731] text-[#DB886F] w-6/12 rounded-md p-2 focus:outline focus:outline-2
+      focus:outline-[#DB886F] duration-200">
   </div>
 
-  <div class="bg-[#242731] text-[#DB886F] w-full p-4 mb-4">
-    <div class="container flex flex-row justify-between content-center">
-      <p>Test To-do</p>
-      <i class="text-[#C84C6B] my-auto fa-solid fa-trash-can"></i>
-    </div>
+  <!-- List To-do -->
+  <div id="todoBody" class="container">
+    <!-- <div class="bg-[#242731] text-[#DB886F] w-full p-4 mb-4">
+      <div class="container flex flex-row justify-between content-center">
+        <p>Test To-do</p>
+        <i class="text-[#C84C6B] hover:text-[#b3445f] duration-300 cursor-pointer my-auto fa-solid fa-trash-can"></i>
+      </div>
+    </div> -->
   </div>
 
-  <script src="src/script/main.js"></script>
 </body>
+<script src="src/script/main.js"></script>
 
 </html>
