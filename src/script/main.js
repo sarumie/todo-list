@@ -10,19 +10,26 @@ function clearTodoList() {
   }
 }
 
+function removeTodoList(index) {
+  todoList.splice(index, 1);
+  displayTodoList();
+}
+
 function addTodoList(index, todo) {
   const parentElement = document.createElement("div");
   const container = document.createElement("div");
   const buttonTrash = document.createElement("i");
   const desc = document.createElement("p");
 
-  parentElement.setAttribute("class", "bg-[#242731] text-[#DB886F] w-full p-4 mb-4")
-  container.setAttribute("class", "container flex flex-row justify-between content-center")
-  buttonTrash.setAttribute("class", "text-[#C84C6B] hover:text-[#b3445f] duration-300 cursor-pointer my-auto fa-solid fa-trash-can")
+  parentElement.setAttribute("class", "bg-[#242731] text-[#DB886F] w-full p-4 mb-4");
+  container.setAttribute("class", "container flex flex-row justify-between content-center");
+  buttonTrash.setAttribute("class", "text-[#C84C6B] hover:text-[#b3445f] duration-300 cursor-pointer my-auto fa-solid fa-trash-can");
 
   desc.textContent = todo;
 
-  buttonTrash.onclick = removeTodoList(index);
+  buttonTrash.onclick = function () {
+    removeTodoList(index);
+  }
 
   container.appendChild(desc);
   container.appendChild(buttonTrash);
