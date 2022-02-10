@@ -1,4 +1,4 @@
-const todoList = ["Menggambar cunny", "Nikah sama anime"];
+const todoList = ["Edit video MMV", "Fix bug application"];
 const inputTodo = document.getElementsByName("todo");
 const todoBody = document.getElementById("todoBody");
 const inputSearch = document.getElementById("search");
