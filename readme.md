@@ -1,6 +1,6 @@
 # To-Do List
 
-My first **Javascript** project
+My first **Javascript** app
 
 I made this project by following video tutorial in course
 
