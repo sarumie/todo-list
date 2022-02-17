@@ -1,5 +1,7 @@
 # To-Do List
 
+Using TailwindCSS and Vanilla JS
+
 My first **Javascript** app
 
 I made this project by following video tutorial in course
