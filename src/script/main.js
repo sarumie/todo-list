@@ -1,20 +1,22 @@
-const todoList = ["Edit video MMV", "Fix bug application"];
+const todoList = ["Edit video", "Fix bug application"];
 const inputTodo = document.getElementsByName("todo");
 const todoBody = document.getElementById("todoBody");
 const inputSearch = document.getElementById("search");
 
-
+// Clear TO-DO
 function clearTodoList() {
   while (todoBody.firstChild) {
     todoBody.removeChild(todoBody.firstChild);
   }
 }
 
+// Fungsi hapus todolist
 function removeTodoList(index) {
   todoList.splice(index, 1);
   displayTodoList();
 }
 
+// Menambah TO-DO
 function addTodoList(index, todo) {
   const parentElement = document.createElement("div");
   const container = document.createElement("div");
@@ -37,6 +39,7 @@ function addTodoList(index, todo) {
   todoBody.appendChild(parentElement);
 }
 
+// Menampilkan TO-DO
 function displayTodoList() {
   clearTodoList();
 
@@ -51,6 +54,7 @@ function displayTodoList() {
   }
 }
 
+// Menambah TO-DO
 document.forms['todoForm'].onsubmit = function (event) {
   event.preventDefault();
   const todo = document.forms['todoForm']['todo'].value;
@@ -66,6 +70,7 @@ document.forms['todoForm'].onsubmit = function (event) {
   displayTodoList();
 }
 
+// Cari todo
 inputSearch.onkeyup = function () {
   displayTodoList();
 }
