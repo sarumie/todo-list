@@ -38,7 +38,7 @@ function addTodoList(index, todo) {
 
   desc.textContent = todo;
 
-  buttonTrash.onclick = function () {
+  buttonTrash.onclick = () => {
     removeTodoList(index);
   };
 
@@ -64,13 +64,11 @@ function displayTodoList() {
 }
 
 // Menambah TO-DO
-document.forms["todoForm"].onsubmit = function (event) {
+document.forms["todoForm"].onsubmit = (event) => {
   event.preventDefault();
   const todo = document.forms["todoForm"]["todo"].value;
 
-  if (todo === "") {
-    return alert("Input kosong");
-  }
+  if (todo === "") return alert("Input kosong");
 
   todoList.push(todo);
 
@@ -80,7 +78,7 @@ document.forms["todoForm"].onsubmit = function (event) {
 };
 
 // Cari todo
-inputSearch.onkeyup = function () {
+inputSearch.onkeyup = () => {
   displayTodoList();
 };
 
