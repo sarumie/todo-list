@@ -4,20 +4,20 @@ const todoBody = document.getElementById("todoBody");
 const inputSearch = document.getElementById("search");
 
 // Clear TO-DO
-function clearTodoList() {
+function clearTodo() {
   while (todoBody.firstChild) {
     todoBody.removeChild(todoBody.firstChild);
   }
 }
 
-// Fungsi hapus todolist
-function removeTodoList(index) {
+// Delete todolist
+function removeTodo(index) {
   todoList.splice(index, 1);
-  displayTodoList();
+  displayTodo();
 }
 
-// Menambah TO-DO
-function addTodoList(index, todo) {
+// Adding TO-DO
+function addTodo(index, todo) {
   const parentElement = document.createElement("div");
   const container = document.createElement("div");
   const buttonTrash = document.createElement("i");
@@ -39,7 +39,7 @@ function addTodoList(index, todo) {
   desc.textContent = todo;
 
   buttonTrash.onclick = () => {
-    removeTodoList(index);
+    removeTodo(index);
   };
 
   container.appendChild(desc);
@@ -49,17 +49,14 @@ function addTodoList(index, todo) {
 }
 
 // Menampilkan TO-DO
-function displayTodoList() {
-  clearTodoList();
+function displayTodo() {
+  clearTodo();
 
   for (let i = 0; i < todoList.length; i++) {
     const todo = todoList[i];
-
     const searchText = document.getElementById("search").value.toLowerCase();
-
     if (todo.toLowerCase().includes(searchText)) {
-      addTodoList(i, todo);
-    }
+      addTodo(i, todo);
   }
 }
 
@@ -68,18 +65,17 @@ document.forms["todoForm"].onsubmit = (event) => {
   event.preventDefault();
   const todo = document.forms["todoForm"]["todo"].value;
 
-  if (todo === "") return alert("Input kosong");
+  if (todo) return alert("Input kosong");
 
   todoList.push(todo);
 
   document.forms["todoForm"].reset();
 
-  displayTodoList();
+  displayTodo();
 };
-
+}
 // Cari todo
-inputSearch.onkeyup = () => {
-  displayTodoList();
-};
+inputSearch.onkeyup = () => displayTodo();
 
-displayTodoList();
+displayTodo();
+
