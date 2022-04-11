@@ -65,7 +65,7 @@ document.forms["todoForm"].onsubmit = (event) => {
   event.preventDefault();
   const todo = document.forms["todoForm"]["todo"].value;
 
-  if (todo) return alert("Input kosong");
+  if (todo == "") return alert("Input kosong");
 
   todoList.push(todo);
 
