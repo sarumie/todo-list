@@ -10,7 +10,7 @@ function clearTodo() {
   }
 }
 
-// Delete todolist
+// Delete TO-DO
 function removeTodo(index) {
   todoList.splice(index, 1);
   displayTodo();
@@ -18,6 +18,8 @@ function removeTodo(index) {
 
 // Adding TO-DO
 function addTodo(index, todo) {
+  if (!index && !todo) return alert("Invalid!") 
+
   const parentElement = document.createElement("div");
   const container = document.createElement("div");
   const buttonTrash = document.createElement("i");
@@ -36,7 +38,7 @@ function addTodo(index, todo) {
     "text-[#C84C6B] hover:text-[#b3445f] duration-300 cursor-pointer my-auto fa-solid fa-trash-can"
   );
 
-  desc.textContent = todo;
+  desc.textContent = todo
 
   buttonTrash.onclick = () => {
     removeTodo(index);
@@ -51,12 +53,13 @@ function addTodo(index, todo) {
 // Menampilkan TO-DO
 function displayTodo() {
   clearTodo();
+  const searchText = document.getElementById("search").value.toLowerCase();
 
   for (let i = 0; i < todoList.length; i++) {
     const todo = todoList[i];
-    const searchText = document.getElementById("search").value.toLowerCase();
     if (todo.toLowerCase().includes(searchText)) {
       addTodo(i, todo);
+    }
   }
 }
 
@@ -73,7 +76,7 @@ document.forms["todoForm"].onsubmit = (event) => {
 
   displayTodo();
 };
-}
+
 // Cari todo
 inputSearch.onkeyup = () => displayTodo();
 
