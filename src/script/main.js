@@ -27,11 +27,11 @@ function addTodo(index, todo) {
 
   parentElement.setAttribute(
     "class",
-    "bg-[#242731] text-[#DB886F] w-full p-4 mb-4"
+    "bg-[#242731] text-[#DB886F] w-full h-fit p-4 mb-4"
   );
   container.setAttribute(
     "class",
-    "container flex flex-row justify-between content-center"
+    "w-full flex flex-row justify-between content-center break-words"
   );
   buttonTrash.setAttribute(
     "class",
