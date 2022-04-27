@@ -1,3 +1,3 @@
 # To-Do List
 
-todo's app created with **JavaScript**
+todo's app created with **JavaScript, TailwindCSS**
