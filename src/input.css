@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('assets/fonts/JetBrainsMono.ttf');
 
-@media (max-width: 639px) {
-  
-}
+@media (max-width: 639px) {}
