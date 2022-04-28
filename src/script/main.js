@@ -2,23 +2,56 @@ const todoList = ["Edit video", "Fix bug application", "Menyapu halaman"];
 const inputTodo = document.getElementsByName("todo");
 const todoBody = document.getElementById("todoBody");
 const inputSearch = document.getElementById("search");
+const toast = document.getElementById('toast');
+const content = document.getElementById('toast_content');
 
-// Clear TO-DO
+// Toast notification
+function toggleToast(type, desc) {
+
+  if (!toast.classList.contains('invisible')) return;
+  toast.classList.remove('invisible');
+
+  // ! Error read properties of null
+  toast.classList.forEach((value) => {
+    if (value.includes('bg-')) toast.classList.remove(value);
+  });
+
+  switch (type) {
+    case "warning":
+      toast.classList.add('bg-red-400');
+      content.innerText = "WARNING :";
+      break;
+    case "invalid":
+      toast.classList.add('bg-yellow-400');
+      content.innerText = "INVALID :";
+      break;
+    default:
+      toast.classList.add('bg-red-400');
+      content.innerText = "WARNING :";
+  }
+  content.innerText += " " + desc;
+
+  setTimeout(() => {
+    toast.classList.add('invisible');
+  }, 2000);
+}
+
+// Clearing TO-DO
 function clearTodo() {
   while (todoBody.firstChild) {
     todoBody.removeChild(todoBody.firstChild);
   }
 }
 
-// Delete TO-DO
-function removeTodo(index) {
-  todoList.splice(index, 1);
+// Deleting TO-DO from index
+function removeTodo(index, count = 1) {
+  todoList.splice(index, count);
   displayTodo();
 }
 
 // Adding TO-DO
 function addTodo(index, todo) {
-  if (!index && !todo) return alert("Invalid!") 
+  if (!index && !todo) return alert("Invalid!")
 
   const parentElement = document.createElement("div");
   const container = document.createElement("div");
@@ -50,25 +83,22 @@ function addTodo(index, todo) {
   todoBody.appendChild(parentElement);
 }
 
-// Menampilkan TO-DO
+// Displaying TO-DO
 function displayTodo() {
   clearTodo();
   const searchText = document.getElementById("search").value.toLowerCase();
 
-  for (let i = 0; i < todoList.length; i++) {
-    const todo = todoList[i];
-    if (todo.toLowerCase().includes(searchText)) {
-      addTodo(i, todo);
-    }
-  }
+  todoList.forEach((element, index) => {
+    if (element.toLowerCase().includes(searchText)) addTodo(index, element);
+  });
 }
 
-// Menambah TO-DO
+// Adding TO-DO when form submitted
 document.forms["todoForm"].onsubmit = (event) => {
-  event.preventDefault();
+  event.preventDefault(); // Mencegah redirect
   const todo = document.forms["todoForm"]["todo"].value;
 
-  if (todo == "") return alert("Input kosong");
+  if (todo == "") return toggleToast('invalid', "Input should'nt be empty!");
 
   todoList.push(todo);
 
@@ -77,8 +107,7 @@ document.forms["todoForm"].onsubmit = (event) => {
   displayTodo();
 };
 
-// Cari todo
-inputSearch.onkeyup = () => displayTodo();
+// Search TO-DO on type
+inputSearch.onkeyup = displayTodo;
 
 displayTodo();
-

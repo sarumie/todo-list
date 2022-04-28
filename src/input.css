@@ -2,7 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 @import url('assets/fonts/JetBrainsMono.ttf');
 
-@media (max-width: 639px) {}
+::-webkit-scrollbar {
+  scrollbar-gutter: auto;
+  padding: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #e6e6e6;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #414141;
+  width: 4px;
+}
