@@ -6,12 +6,11 @@ const toast = document.getElementById('toast');
 const content = document.getElementById('toast_content');
 
 // Toast notification
-function toggleToast(type, desc) {
+function displayToast(type, desc) {
 
   if (!toast.classList.contains('invisible')) return;
   toast.classList.remove('invisible');
 
-  // ! Error read properties of null
   toast.classList.forEach((value) => {
     if (value.includes('bg-')) toast.classList.remove(value);
   });
@@ -98,7 +97,7 @@ document.forms["todoForm"].onsubmit = (event) => {
   event.preventDefault(); // Mencegah redirect
   const todo = document.forms["todoForm"]["todo"].value;
 
-  if (todo == "") return toggleToast('invalid', "Input should'nt be empty!");
+  if (todo == "") return displayToast('invalid', "Input should'nt be empty!");
 
   todoList.push(todo);
 
