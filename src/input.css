@@ -2,18 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('assets/fonts/JetBrainsMono.ttf');
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../assets/fonts/JetBrainsMono.ttf")
+}
+
+html {
+  overflow-y: overlay;
+}
 
 ::-webkit-scrollbar {
   scrollbar-gutter: auto;
-  padding: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #e6e6e6;
+  background-color: #1C1E26;
+
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #414141;
-  width: 4px;
+  background-color: #242731;
+  width: 3px;
 }

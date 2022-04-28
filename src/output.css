@@ -564,16 +564,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(28 30 38 / var(--tw-bg-opacity));
 }
 
-.bg-red-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-
-.bg-yellow-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#242731\] {
   --tw-bg-opacity: 1;
   background-color: rgb(36 39 49 / var(--tw-bg-opacity));
@@ -666,20 +656,27 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-duration: 200ms;
 }
 
-@import url('assets/fonts/JetBrainsMono.ttf');
+@font-face {
+  font-family: "JetBrains Mono";
+
+  src: url("../assets/fonts/JetBrainsMono.ttf")
+}
+
+html {
+  overflow-y: overlay;
+}
 
 ::-webkit-scrollbar {
   scrollbar-gutter: auto;
-  padding: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #e6e6e6;
+  background-color: #1C1E26;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #414141;
-  width: 4px;
+  background-color: #242731;
+  width: 3px;
 }
 
 .selection\:bg-\[\#DB886F\] *::-moz-selection {
