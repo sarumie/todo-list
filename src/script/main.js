@@ -16,19 +16,19 @@ function displayToast(type, desc) {
   });
 
   switch (type) {
-    case "warning":
+    case 'warning':
       toast.classList.add('bg-red-400');
-      content.innerText = "WARNING :";
+      content.innerText = desc.replace(/^/, 'WARNING : ');
       break;
-    case "invalid":
+    case 'invalid':
       toast.classList.add('bg-yellow-400');
-      content.innerText = "INVALID :";
+      content.innerText = desc.replace(/^/, 'INVALID : ');
       break;
     default:
       toast.classList.add('bg-red-400');
-      content.innerText = "WARNING :";
+      content.innerText = desc.replace(/^/, 'WARNING : ');
   }
-  content.innerText += " " + desc;
+
 
   setTimeout(() => {
     toast.classList.add('invisible');
