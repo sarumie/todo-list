@@ -3,43 +3,27 @@ const inputTodo = document.getElementsByName("todo");
 const todoBody = document.getElementById("todoBody");
 const inputSearch = document.getElementById("search");
 const toast = document.getElementById('toast');
-const content = document.getElementById('toast_content');
+const toastContent = document.getElementById('toast_content');
+const counter = document.getElementById('counter');
 
 // Toast notification
-function displayToast(type, desc) {
+function displayToast(isSuccess, desc) {
+  if (typeof isSuccess !== 'boolean') return displayToast(false, "First param is not a boolean");
 
-  if (!toast.classList.contains('invisible')) return;
+  if (toast.classList.contains('bg-green-400')) toast.classList.remove('bg-green-400');
+  if (toast.classList.contains('bg-red-400')) toast.classList.remove('bg-red-400');
+
+  isSuccess ? toast.classList.add('bg-green-400') : toast.classList.add('bg-red-400');
+  isSuccess ? toastContent.innerText = desc : toastContent.innerText = desc.replace(/^/, 'INVALID : ');
+
   toast.classList.remove('invisible');
 
-  toast.classList.forEach((value) => {
-    if (value.includes('bg-')) toast.classList.remove(value);
-  });
-
-  switch (type) {
-    case 'warning':
-      toast.classList.add('bg-red-400');
-      content.innerText = desc.replace(/^/, 'WARNING : ');
-      break;
-    case 'invalid':
-      toast.classList.add('bg-yellow-400');
-      content.innerText = desc.replace(/^/, 'INVALID : ');
-      break;
-    default:
-      toast.classList.add('bg-red-400');
-      content.innerText = desc.replace(/^/, 'WARNING : ');
-  }
-
-
-  setTimeout(() => {
-    toast.classList.add('invisible');
-  }, 2000);
+  setTimeout(() => toast.classList.add('invisible'), 2000);
 }
 
 // Clearing TO-DO
 function clearTodo() {
-  while (todoBody.firstChild) {
-    todoBody.removeChild(todoBody.firstChild);
-  }
+  while (todoBody.firstChild) todoBody.removeChild(todoBody.firstChild);
 }
 
 // Deleting TO-DO from index
@@ -50,7 +34,7 @@ function removeTodo(index, count = 1) {
 
 // Adding TO-DO
 function addTodo(index, todo) {
-  if (!index && !todo) return alert("Invalid!")
+  if (!index && !todo) return displayToast(false, "Failed adding todo");
 
   const parentElement = document.createElement("div");
   const container = document.createElement("div");
@@ -63,7 +47,7 @@ function addTodo(index, todo) {
   );
   container.setAttribute(
     "class",
-    "w-full flex flex-row justify-between content-center break-words"
+    "w-full flex flex-row justify-between toastContent-center break-words"
   );
   buttonTrash.setAttribute(
     "class",
@@ -72,14 +56,14 @@ function addTodo(index, todo) {
 
   desc.textContent = todo
 
-  buttonTrash.onclick = () => {
-    removeTodo(index);
-  };
+  buttonTrash.onclick = () => removeTodo(index);
 
   container.appendChild(desc);
   container.appendChild(buttonTrash);
   parentElement.appendChild(container);
   todoBody.appendChild(parentElement);
+
+  document.title = `To-do List(${todoList.length})`
 }
 
 // Displaying TO-DO
@@ -94,16 +78,17 @@ function displayTodo() {
 
 // Adding TO-DO when form submitted
 document.forms["todoForm"].onsubmit = (event) => {
-  event.preventDefault(); // Mencegah redirect
+  event.preventDefault(); // <-- Mencegah redirect
   const todo = document.forms["todoForm"]["todo"].value;
 
-  if (todo == "") return displayToast('invalid', "Input should'nt be empty!");
+  if (todo == "") return displayToast(false, "Input should'nt be empty!");
 
   todoList.push(todo);
 
   document.forms["todoForm"].reset();
 
   displayTodo();
+  displayToast(true, 'TO-DO added >w<')
 };
 
 // Search TO-DO on type
