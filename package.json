@@ -3,6 +3,7 @@
     "tailwindcss": "^3.0.19"
   },
   "scripts": {
-    "watch": "npx tailwindcss -i src/input.css -o src/output.css --watch"
+    "watch": "npx tailwindcss -i src/input.css -o src/output.css --watch",
+    "minifycss": "npx tailwindcss -i src/output.css -o src/build.css minify"
   }
 }

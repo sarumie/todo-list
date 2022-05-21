@@ -14,7 +14,7 @@
   <title>TO-DO List</title>
 </head>
 
-<body class="selection:bg-[#DB886F] selection:text-[#242731] bg-[#1C1E26] overflow-x-hidden">
+<body class="selection:bg-base-orange selection:text-base-black bg-base-black overflow-x-hidden">
 
   <!-- Temp classes to reuse -->
   <!-- <div class="bg-red-400"></div> -->
@@ -22,42 +22,63 @@
 
   <!-- Toast Notification -->
   <div id="toast"
-    class="invisible flex sticky w-screen p-2 text-center items-center justify-center transition-all duration-300">
-    <p id="toast_content" class="text-[#242731] text-lg font-semibold">
+    class="invisible flex fixed w-screen p-2 text-center items-center justify-center transition-all duration-300">
+    <p id="toast_content" class="text-base-black text-lg font-semibold">
       undefined
     </p>
   </div>
 
+  <!-- Pop-up window for edit todo -->
+  <section id="popup-edit" class="invisible fixed w-full h-screen flex justify-center items-center">
+    <div id="bg-popup" class="absolute w-full h-full opacity-50 bg-black"></div>
+    <form name="todo-edit" class="w-[500px] h-4/5 flex flex-col z-10">
+      <main class="flex flex-col h-3/4 bg-base-black p-5 rounded-md">
+        <input type="text" name="title" id="todo-title" placeholder="Type ur title here boi..."
+          class="p-2 w-full bg-base-gray text-base-orange text-xl outline-none border-b-2 border-[#404557] mb-8">
+        <p class="text-base-white mb-2">Description :</p>
+        <textarea name="desc" id="todo"
+          class="w-full h-full resize-none outline-none bg-base-gray text-base-white p-2"></textarea>
+      </main>
+      <button type="submit"
+        class="w-full h-11 p-2 mt-5 bg-base-yellow text-base-black rounded-md font-bold hover:brightness-90 hover:duration-200">Update</button>
+    </form>
+  </section>
+
+  <!-- Title -->
   <div class="mt-7 lg:w-[1000px] smx:px-3 lg:mx-auto">
-    <div class="w-full p-5 text-center">
-      <h1 class="font-bold text-5xl text-[#BBBBBB]">TO-DO</h1>
+    <div class="w-full p-5 text-base-white text-center">
+      <h1 class="font-bold text-5xl">TO-DO List</h1>
+      <p class="font-bold text-sm">by <a href="https://github.com/sarumie" target="_blank"
+          class="duration-200 hover:border-solid border-none border-b-2 border-base-white">sarumie</a>
+      </p>
     </div>
 
     <!-- Add To-do -->
-    <form name="todoForm" class="w-full p-5 mb-10 flex justify-center mx-auto">
-      <!-- <h2 class="text-xl text-[#1C1E26]">Add Todo</h2> -->
-      <input type="text" name="todo" spellcheck="false" placeholder="Add your to-do here..." autocomplete="off"
-        class="bg-[#242731] text-[#DB886F] basis-11/12 outline-none w-full p-3" />
+    <form name="todo-add" class="w-full p-5 mb-10 flex justify-center mx-auto">
+      <!-- <h2 class="text-xl text-base-black">Add Todo</h2> -->
+      <input type="text" name="todo" placeholder="Add your to-do here..." autocomplete="off"
+        class="bg-base-gray text-base-orange basis-11/12 outline-none w-full p-3" />
       <button type="submit"
-        class="p-3 text-[#1C1E26] bg-[#DB886F] ml-5 text-center font-bold hover:bg-[#f09479] duration-300">
+        class="p-3 text-base-black bg-base-orange ml-5 text-center font-bold hover:bg-[#f09479] duration-300">
         Add
       </button>
     </form>
 
     <!-- Sub-header -->
     <div class="w-full mx-auto flex justify-between items-center mb-3">
-      <h2 id="counter" class="text-lg text-[#BBBBBB]">To-do :</h2>
-      <input type="text" name="search" id="search" spellcheck="false" placeholder="Filter..." autocomplete="off"
-        class="bg-[#242731] text-[#DB886F] w-6/12 rounded-md p-2 focus:outline focus:outline-2 focus:outline-[#DB886F] duration-200" />
+      <h2 id="counter" class="text-lg text-base-white">To-do :</h2>
+      <input type="text" name="search" id="search" placeholder="Filter..." autocomplete="off"
+        class="bg-base-gray text-base-orange w-6/12 rounded-md p-2 focus:outline focus:outline-2 focus:outline-base-orange duration-200" />
     </div>
 
     <!-- List To-do -->
     <div id="todoBody" class="w-full mx-auto">
       <!--* Body list of to-do
-      <div class="bg-[#242731] text-[#DB886F] w-full p-4 mb-4">
-        <div class="w-full flex flex-row justify-between content-center">
+      <!-- TODO : Fix overflow when too much text value in title
+      <div class="bg-base-black text-base-orange w-full p-4 mb-4">
+        <div class="w-full flex flex-row justify-between content-center hover:cursor-pointer break-words">
           <p>Test To-do</p>
-          <i class="text-[#C84C6B] hover:text-[#b3445f] duration-300 cursor-pointer my-auto fa-solid fa-trash-can"></i>
+          <i class="text-base-red hover:text-[#b3445f] duration-300 cursor-pointer my-auto fa-solid fa-trash-can"></i>
         </div>
       </div>
       -->
